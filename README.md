@@ -10,7 +10,7 @@ This package wraps age library into usable mobile library.
 
 ### Android
 
-1. Get `age.aar` (You can get `age.aar` from [release page]() or clone the repo and execute `make build-android` to build .aar yourself)
+1. Get `age.aar` (You can get `age.aar` from [release page](https://github.com/MarinX/agemobile/releases) or clone the repo and execute `make build-android` to build .aar yourself)
 2. Create `libs` folder in your app project android app and copy `age.aar`
 3. Include dependency for Android in `build.gradle`
 
