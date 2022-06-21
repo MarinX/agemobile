@@ -15,5 +15,6 @@
 # vendor/
 
 # Output of gomobile
-age.aar
-age-sources.jar
+build/android/age-sources.jar
+build/android/age.aar
+build/ios/Age.xcframework

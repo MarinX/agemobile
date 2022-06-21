@@ -10,8 +10,8 @@ This package wraps age library into usable mobile library.
 
 ### Android
 
-1. Get `age.aar` (You can get `age.aar` from [release page](https://github.com/MarinX/agemobile/releases) or clone the repo and execute `make build-android` to build .aar yourself)
-2. Create `libs` folder in your app project android app and copy `age.aar`
+1. Get `age.aar` (You can get `age.aar` from [release page](https://github.com/MarinX/agemobile/releases) or clone the repo and execute `make build-android` to build .aar yourself - Build artifact is located in `build/android` folder.)
+2. Add `age.aar` to `libs` folder in your app project
 3. Include dependency for Android in `build.gradle`
 
 ```gradle
@@ -24,7 +24,9 @@ dependencies {
 
 ### iOS
 
-No documentation, PR's welcome
+1. Get `Age.xcframework` (You can get `Age.xcframework` from [release page](https://github.com/MarinX/agemobile/releases) or clone the repo and execute `make build-ios` to build yourself - Build artifact is located in `build/ios` folder.)
+2. Copy `Age.xcframework` into iOS project framework folder
+3. Import `Age` in Swift
 
 ## Usage
 
@@ -92,7 +94,7 @@ No examples, yet! PR's welcome.
 
 ## Contributing
 
-PR's are welcome. Please read [CONTRIBUTING.md](https://github.com/MarinX/agemobile/blob/master/CONTRIBUTING.md) for more info
+PR's are welcome. Please read [CONTRIBUTING.md](https://github.com/MarinX/agemobile/blob/main/CONTRIBUTING.md) for more info
 
 ## License
 
