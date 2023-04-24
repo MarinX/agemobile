@@ -90,7 +90,35 @@ try {
 
 ### iOS
 
-No examples, yet! PR's welcome.
+There is an example project in [\_examples/ios](./_examples/ios/AgeMobile) folder
+
+#### Generate Key
+
+```swift
+import Age
+
+let identity = AgemobileGenerateX25519Identity(nil)
+let privateKey = identity?.string()
+let publicKey = identity?.recipient()?.string()
+
+```
+
+#### Encrypt
+
+```swift
+import Age
+
+let input = "my secret"
+let encrypted = AgemobileEncrypt(identity?.recipient()?.string(), input, true, nil)
+```
+
+#### Decrypt
+
+```swift
+import Age
+
+let decrypted = AgemobileDecrypt(identity?.string(), encrypted, nil)
+```
 
 ## Contributing
 
