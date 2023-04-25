@@ -1,0 +1,9 @@
+framework module "Age" {
+	header "ref.h"
+    header "Age.objc.h"
+    header "Agemobile.objc.h"
+    header "Universe.objc.h"
+    header "Age.h"
+
+    export *
+}
