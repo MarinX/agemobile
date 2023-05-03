@@ -1,6 +1,26 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
-  ]
+    "config:base",
+    "group:allNonMajor",
+    "group:definitelyTyped",
+    "group:recommended",
+    "schedule:nonOfficeHours",
+    "preview:dockerVersions",
+    "preview:dockerCompose",
+    ":maintainLockFilesMonthly",
+    ":disablePeerDependencies",
+    ":labels(dependencies,kind:chore)",
+    "replacements:all",
+    "workarounds:all",
+    "github>whitesource/merge-confidence:beta"
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    }
+  ],
+  "rangeStrategy": "bump",
+  "rebaseWhen": "auto"
 }
