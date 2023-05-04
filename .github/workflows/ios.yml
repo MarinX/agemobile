@@ -21,3 +21,7 @@ jobs:
       run: go install golang.org/x/mobile/cmd/gomobile@latest && gomobile init
     - name: Build
       run: make build-ios
+    - uses: actions/upload-artifact@v3
+      with:
+        name: ios
+        path: build/ios
