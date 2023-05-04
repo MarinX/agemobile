@@ -36,6 +36,25 @@ func TestEncryptArmor(t *testing.T) {
 	}
 }
 
+func TestEncryptArmorPass(t *testing.T) {
+	enc, err := EncryptPass("Super-Dopper-Secure-Password-Generated-Securely", "Hello World", true)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(enc, armor.Header) {
+		t.Fatalf("expected armor encrypted file but got %v", enc)
+	}
+}
+
+func TestEncryptPass(t *testing.T) {
+	_, err := EncryptPass("Super-Dopper-Secure-Password-Generated-Securely", "Hello World", false)
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+
+
 func TestEncryptFile(t *testing.T) {
 	a, err := age.GenerateX25519Identity()
 	if err != nil {
