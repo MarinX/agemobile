@@ -5,7 +5,8 @@ import (
 	"os"
 	"strings"
 	"testing"
-
+b64 "encoding/base64"
+    "fmt"
 	"filippo.io/age"
 	"filippo.io/age/armor"
 )
@@ -44,16 +45,16 @@ func TestEncryptArmorPass(t *testing.T) {
 	if !strings.Contains(enc, armor.Header) {
 		t.Fatalf("expected armor encrypted file but got %v", enc)
 	}
+	fmt.Println(b64.StdEncoding.EncodeToString([]byte(enc)))
 }
 
 func TestEncryptPass(t *testing.T) {
-	_, err := EncryptPass("Super-Dopper-Secure-Password-Generated-Securely", "Hello World", false)
+	enc, err := EncryptPass("Super-Dopper-Secure-Password-Generated-Securely", "Hello World", false)
 	if err != nil {
 		t.Fatal(err)
 	}
+	fmt.Println(b64.StdEncoding.EncodeToString([]byte(enc)))
 }
-
-
 
 func TestEncryptFile(t *testing.T) {
 	a, err := age.GenerateX25519Identity()

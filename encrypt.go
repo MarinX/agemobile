@@ -21,6 +21,7 @@ func Encrypt(recipients string, input string, withArmor bool) (string, error) {
 	err = encrypt(ids, strings.NewReader(input), buff, withArmor)
 	return buff.String(), err
 }
+
 // EncryptPass
 func EncryptPass(pass string, input string, withArmor bool) (string, error) {
 	buff := bytes.NewBuffer(nil)
