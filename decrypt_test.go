@@ -1,12 +1,27 @@
 package agemobile
 
 import (
+	b64 "encoding/base64"
+	"fmt"
 	"io"
 	"os"
 	"testing"
 
 	"filippo.io/age"
 )
+
+func TestDecryptPass(t *testing.T) {
+	b64key := "YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IHNjcnlwdCBwT29hWWJxSUF6a0FxMnpiSXVJVGxBIDE4CkkrdXpIZk1uQlhqSWxscCtiSDdGOHlZdkNUTkNzUEMyOEx4aXVET2w0ZzQKLS0tIDlYREdmZUJMT2w4Y2Y3M3dsUmJDZlgweTZ6TjExMitUVVdSV1VnM3U5azgKvUblkUHUQXjEyG1kAKL5XmJHKqUuIeClo9b18JN7y4AMo+6qUjZ1IerK6RkRvRoMzG75NKfsJ/YiSFcPC61JW95o73+IXDAvVVLTp44ihm6ESkJeEEOfFVKDstA8jMTSxmxmP32pxkpLav8bAP65mQL/L5JzJ4vJkXUw5Pj/4y/bhtKRiBo86cl8ZAZDJAnHiwCg7JkUm/dxrCCW0Gpqj/lyXaaq+4LjqSo/eAinV5a7vTAWv4jQqE3240hPqVlP7GWqqouS9TMpLmjixhN6sh7kNdYdiUZ/2CPmnJE="
+	key, _ := b64.StdEncoding.DecodeString(b64key)
+	enc, err := DecryptPass(
+		"adjust-sample-fault-museum-grid-uncle-comic-gold-impact-myth",
+		string(key),
+	)
+	if err != nil {
+		t.Fatal(err)
+	}
+	fmt.Println(b64.StdEncoding.EncodeToString([]byte(enc)))
+}
 
 func TestDecrypt(t *testing.T) {
 	txt := "Hello World"

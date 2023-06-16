@@ -22,6 +22,19 @@ func Decrypt(keys string, input string) (string, error) {
 	return buff.String(), nil
 }
 
+// Decrypt decrypts an input for provided keys seperated with new lines
+func DecryptPass(pass string, input string) (string, error) {
+	id, err := age.NewScryptIdentity(pass)
+	if err != nil {
+		return "", err
+	}
+
+	buff := bytes.NewBuffer(nil)
+	decryptPass(id, strings.NewReader(input), buff)
+
+	return buff.String(), nil
+}
+
 // Decrypt decrypts an input file path to output file path for provided keys seperated with new lines
 func DecryptFile(keys string, input, output string) error {
 	ids, err := age.ParseIdentities(strings.NewReader(keys))
@@ -54,6 +67,24 @@ func decrypt(keys []age.Identity, in io.Reader, out io.Writer) error {
 	}
 
 	r, err := age.Decrypt(in, keys...)
+	if err != nil {
+		return err
+	}
+	if _, err := io.Copy(out, r); err != nil {
+		return err
+	}
+	return nil
+}
+
+func decryptPass(keys *age.ScryptIdentity, in io.Reader, out io.Writer) error {
+	rr := bufio.NewReader(in)
+	if start, _ := rr.Peek(len(armor.Header)); string(start) == armor.Header {
+		in = armor.NewReader(rr)
+	} else {
+		in = rr
+	}
+
+	r, err := age.Decrypt(in, keys)
 	if err != nil {
 		return err
 	}
